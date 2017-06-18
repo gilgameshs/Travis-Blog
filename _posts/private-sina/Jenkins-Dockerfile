@@ -1,0 +1,15 @@
+FROM jenkins:latest
+
+USER root
+RUN apt-get update \
+	&& apt-get install -y sudo \
+	&& rm -rf /var/lib/apt/list/*
+RUN echo "jenkins ALL=NOPASSWD: ALL" >>/etc/sudoers
+
+USER jenkins
+
+COPY plugins.txt /usr/share/jenkins/plugins.txt
+RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
+
+
+# docker run -d --name docker-jenkins -p 8081:8080 -p 50000:50000 -v /usr/local/jenkins-home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker docker-jenkins

@@ -6,9 +6,6 @@ date:       2015-03-31
 author:     "Hux"
 header-img: "img/post-bg-e2e-ux.jpg"
 tags:
-    - 交互设计
-    - English-only
-    - UX Design
 ---
 
 
